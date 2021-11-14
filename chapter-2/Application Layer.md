@@ -67,7 +67,7 @@ Client 若要與 server 聯繫，需要知道 server 的位址。Client 在主�
 
 #### **Throughput 最小傳輸量**
 
-由於一台 host 可能有許多的 processes 在運作，每條 process 的 bandwith 可能都不一樣，bandwith 會隨著時間變動，因此就有傳輸層協議可以限制一筆資料的最小傳輸量。有這種 throughput 限制的應用程式我們會稱其為 `bandwith-sensitive application`。
+由於一台 host 可能有許多的 processes 在運作，每條 process 的 bandwidth 可能都不一樣，bandwidth 會隨著時間變動，因此就有傳輸層協議可以限制一筆資料的最小傳輸量。有這種 throughput 限制的應用程式我們會稱其為 `bandwidth-sensitive application`。
 
 #### **Timing 延遲**
 
@@ -174,7 +174,7 @@ time = RTT + file transmission time
 - `500 internal server error`
 - `505 http version not support`
 
-在 Header 中可以看到 `Keep-alive` 標籤，如果是 true 就是 persisten http，false 就是 non-persisten http。
+在 Header 中可以看到 `Keep-alive` 標籤，如果是 true 就是 persistent http，false 就是 non-persistent http。
 
 ### 2.2.4 Cookies
 
@@ -188,7 +188,7 @@ time = RTT + file transmission time
 
 Proxy server 會存儲一些資料，如果 proxy server 有客戶端需要的東西的話，那麼 proxy server 可以直接提供，否則 proxy server 會往 server 送一個完整的 request 來取得資料。
 
-通常會應用在當區域網的速度遠大於連接外網的速度時，由於連接外網的速度比較慢，這時候如果內網有一個類似佔存的東西在，那麼就可以直接在內網先看有沒有資料是可以直接回傳的，沒有再跟外網的伺服器去要。
+通常會應用在當區域網的速度遠大於連接外網的速度時，由於連接外網的速度比較慢，這時候如果內網有一個類似暫存的東西在，那麼就可以直接在內網先看有沒有資料是可以直接回傳的，沒有再跟外網的伺服器去要。
 
 目前已很少見，這項技術是用在以前網路速度不夠快的時候，現在網頁的頻寬已經足夠了。
 
@@ -354,10 +354,10 @@ RRs 的儲存格式為 4-tuple 的資料 `(Name, Value, Type, TTL)`。
     - Value: 這個 domain 所對應到的 authoritative DNS server
   - `CNAME`:
     - Name: alias hostname
-    - Value: canoical hostname(典範 hostname)
+    - Value: canonical hostname(典範 hostname)
   - `MX`:
     - Name: 針對 mail server 的 alias hostname
-    - Value: 針對 mail server 的 canoical hostname(典範 hostname)
+    - Value: 針對 mail server 的 canonical hostname(典範 hostname)
 - TTL: 紀錄了 RRs 的儲存時間，時間一到就會被記憶體釋放。
 
 #### **DNS Messages**
@@ -443,7 +443,7 @@ BitTorrent 有使用到一種 tit-for-tat 的 trading algorithm，只要不分�
 影片是由許多幀的圖片所構成，一個圖片又是以許多的 pixel 所構成，如此一來如果沒有作特殊處理檔案會十分巨大，編碼 (coding) 就是在做這件事情。
 
 - CBR(constant bit rate): video encoding rate fixed
-- VBR(variable bit rate): video encoding rate chages as amount of spatial, temporal coding changes (居多)
+- VBR(variable bit rate): video encoding rate changes as amount of spatial, temporal coding changes (居多)
 
 #### 播放預錄影片
 
